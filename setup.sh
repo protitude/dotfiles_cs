@@ -1,13 +1,14 @@
 #!/bin/bash
-files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".ansible.cfg" ".gitconfig" ".gitignore" ".bash_ps1" ".vim" ".vimrc" ".osx" ".tmux.conf" ".goto_shortcuts" ".zsh" ".zshrc")
+files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".gitconfig" ".gitignore" ".bash_ps1" ".vim" ".vimrc" ".tmux.conf" ".goto_shortcuts" ".zsh" ".zshrc")
 
 for i in "${files[@]}"
 do
-  if [ ! -L $1$i ]
+  if [ ! -L ~/$i ]
   then
-    ln -s $(pwd)"/$i" "$1$i"
-    echo "linked $i"
+    mv ~/$i /tmp/
   fi
+  ln -s /workspaces/.codespaces/.persistedshare/dotfiles/$i ~/$i
+  echo "linked $i"
 done
 
 if [ ! -d bundle ]
