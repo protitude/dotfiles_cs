@@ -1,0 +1,5 @@
+alias .oit="cd ~/Documents/web/dingo"
+alias .tmux="cd ~/Documents/dotfiles/tmux-session"
+alias .oit-modules="cd ~/Documents/web/dingo/docroot/sites/all/modules"
+alias .oit-cassowary="cd ~/Documents/web/dingo/docroot/sites/all/themes/cassowary"
+alias .cid="cd ~/Documents/web/cid"

@@ -1,0 +1,76 @@
+# Fill with minuses
+# (this is recalculated every time the prompt is shown in function prompt_command):
+fill="—- "
+
+reset_style='\[\033[00m\]'
+status_style=$reset_style'\[\033[0;90m\]' # gray color; use 0;37m for lighter color
+git_style=$reset_style'\[\033[01;34m\]' # gray color; use 0;37m for lighter color
+prompt_style=$reset_style
+command_style=$reset_style'\[\033[1;29m\]' # bold black
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+git_branch_color() {
+  if [ "$(parse_git_branch)" == '(dev)' ]; then
+    # Dev is blue
+    echo -e "\\033[38;5;027m"$(parse_git_branch)"\\033[0m"
+  elif [ "$(parse_git_branch)" == '(stage)' ]; then
+    # Stage is yellow
+    echo -e "\\033[38;5;229m"$(parse_git_branch)"\\033[0m"
+  elif [ "$(parse_git_branch)" == '(master)' ]; then
+    # Master is red
+    echo -e "\\033[38;5;001m"$(parse_git_branch)"\\033[0m"
+  else
+    echo -e $(parse_git_branch)
+  fi
+}
+pwd_two() {
+  pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
+}
+
+if [ "$(uname)" == "Darwin" ]; then
+  env_icon="🍎"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  env_icon="🐧"
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+  env_icon= "¯\_(ツ)_/¯"
+fi
+
+# Prompt variable:
+prompt_info() {
+  echo $(hostname)"::"$(pwd_two)$(git_branch_color)
+}
+prompt_info_char() {
+  echo -n $(hostname)"::"$(pwd_two)$(parse_git_branch)|wc -c|grep -o "[0-9]\+"
+}
+
+PS1="$status_style"'$(prompt_info)$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}$env_icon'"$command_style "
+
+# Reset color for command output
+# (this one is invoked every time before a command is executed):
+trap 'echo -ne "\033[00m"' DEBUG
+
+function prompt_command {
+
+# create a $fill of all screen width minus the time string and a space:
+let fillsize=${COLUMNS}-$( prompt_info_char )-12
+fill=""
+while [ "$fillsize" -gt "0" ]
+  do
+    fill="-${fill}" # fill with underscores to work on
+    let fillsize=${fillsize}-1
+    done
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+bname=`basename "${PWD/$HOME/~}"`
+echo -ne "\033]0;${bname}: ${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"
+;;
+*)
+;;
+esac
+
+}
+PROMPT_COMMAND=prompt_command

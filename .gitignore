@@ -1,0 +1,5 @@
+*.DS_Store
+*.LSOverride
+Thumbs.db
+.vim/bundle/*
+.vim/.netrwhist
