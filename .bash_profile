@@ -41,6 +41,3 @@ function short () {
   echo 'alias .'$1'="cd '$shortcut'"' >> ~/.goto_shortcuts
   source ~/.bash_profile
 }
-if [ -f "$HOME/.bash_ps1" ]; then
-  . "$HOME/.bash_ps1"
-fi

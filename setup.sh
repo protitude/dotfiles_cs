@@ -1,5 +1,5 @@
 #!/bin/bash
-files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".gitconfig" ".gitignore" ".bash_ps1" ".vim" ".vimrc" ".tmux.conf" ".goto_shortcuts" ".zsh" ".zshrc")
+files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".gitconfig" ".gitignore" ".vim" ".vimrc" ".tmux.conf" ".goto_shortcuts" ".zshrc")
 
 for i in "${files[@]}"
 do
