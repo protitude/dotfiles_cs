@@ -60,7 +60,7 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 " Set the codesniffer args
 let g:phpqa_codesniffer_args = "--standard=Zend"
-let g:phpqa_messdetector_ruleset = "/Users/milesfrance/drush/vendor/phpunit/phpunit/build/phpmd.xml"
+let g:phpqa_messdetector_ruleset = "~/drush/vendor/phpunit/phpunit/build/phpmd.xml"
 " Slow down markdown preview
 let g:instant_markdown_slow = 1
 " Syntatic settings

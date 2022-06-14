@@ -2,7 +2,7 @@
   email = miles.france@gmail.com
   name = protitude
 [core]
-  excludesfile = /Users/milesfrance/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
   prune = fetch --prune
   # Because I constantly forget how to do this
