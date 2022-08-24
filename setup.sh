@@ -1,10 +1,8 @@
 #!/bin/bash
 if [[ $1 == "linode" ]]; then
   type = 'linode'
-  home = '/home/protitude'
 else
   type = 'cs'
-  home = '/workspaces/.codespaces/.persistedshare'
 fi
 sudo apt update
 sudo apt install python3-dev python3-pip python3-setuptools -y
@@ -26,17 +24,21 @@ do
   then
     mv ~/$i /tmp/
   fi
-  ln -s $home/dotfiles/$i ~/$i
+  if [[ $type == 'cs' ]]; then
+    ln -s "/workspaces/.codespaces/.persistedshare/dotfiles/$i" ~/$i
+  else
+    ln -s "/home/protitude/dotfiles/$i" ~/$i
+  fi
   echo "linked $i"
 done
 
 if [ ! -d bundle ]
 then
   mkdir .vim/bundle
+  git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
 fi
 
 if [ ! -L $1.vim/bundle/vim-multiple-cursors ]
 then
   vim +PluginInstall +qall
 fi
-
