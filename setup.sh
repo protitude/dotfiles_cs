@@ -42,3 +42,9 @@ if [ ! -L $1.vim/bundle/vim-multiple-cursors ]
 then
   vim +PluginInstall +qall
 fi
+
+if [[ $type == 'linode' ]]; then
+  if test -f "linode-setup.sh"; then
+    ./linode-setup.sh
+  fi
+fi
