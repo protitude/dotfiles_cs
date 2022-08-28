@@ -13,8 +13,8 @@ if [[ $type == 'cs' ]]; then
   wget -P /tmp https://starship.rs/install.sh
   chmod u+x /tmp/install.sh
   /tmp/install.sh -y
+  pip3 install thefuck --user
 fi
-pip3 install thefuck --user
 
 files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".gitconfig" ".gitignore" ".vim" ".vimrc" ".tmux.conf" ".goto_shortcuts" ".zshrc" )
 
