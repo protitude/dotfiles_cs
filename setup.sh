@@ -1,6 +1,8 @@
 #!/bin/bash
 if [[ $1 == "linode" ]]; then
   type = 'linode'
+elif [[ $1 == "pi" ]]; then
+  type = 'pi'
 else
   type = 'cs'
 fi
@@ -26,6 +28,8 @@ do
   fi
   if [[ $type == 'cs' ]]; then
     ln -s "/workspaces/.codespaces/.persistedshare/dotfiles/$i" ~/$i
+  elif [[ $type == 'pi' ]]; then
+    ln -s "/home/pi/dotfiles/$i" ~/$i
   else
     ln -s "/home/protitude/dotfiles/$i" ~/$i
   fi
