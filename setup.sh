@@ -1,10 +1,10 @@
 #!/bin/bash
 if [[ $1 == "linode" ]]; then
-  type = 'linode'
+  type='linode'
 elif [[ $1 == "pi" ]]; then
-  type = 'pi'
+  type='pi'
 else
-  type = 'cs'
+  type='cs'
 fi
 if [[ $type == 'cs' ]]; then
   sudo apt update
