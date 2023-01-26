@@ -179,6 +179,9 @@ alias cw="compass watch --poll"
 alias bccp="bundle exec compass compile -e production --force"
 alias bcw="bundle exec compass watch --poll"
 
+# Import codespaces key
+alias cskeyload="eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/codespaces_rotating_key"
+
 function tm {
   mv $1 /tmp
 }
