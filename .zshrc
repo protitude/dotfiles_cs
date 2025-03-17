@@ -197,3 +197,24 @@ function short () {
   source ~/.bash_profile
 }
 
+function robo() {
+  if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/robo" ]; then
+    $PROJECT_ROOT/vendor/bin/robo "$@"
+
+  # Check for local robo.
+  elif [ -f "./vendor/bin/robo" ]; then
+    ./vendor/bin/robo "$@"
+
+  else
+    echo "You must run this command from within a Robo-generated project."
+    return 1
+  fi
+}
+
+
