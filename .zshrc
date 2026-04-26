@@ -144,7 +144,6 @@ function blt() {
 }
 #export PATH="/usr/local/opt/node@12/bin:$PATH"
 eval "$(starship init zsh)"
-eval $(thefuck --alias oi)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
