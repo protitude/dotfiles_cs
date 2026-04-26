@@ -32,7 +32,11 @@ precmd() { print '' }
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-ZSH_THEME="codespaces"
+if [[ "$CODESPACES" == "true" ]]; then
+  ZSH_THEME="codespaces"
+else
+  ZSH_THEME="robbyrussell"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,7 +94,7 @@ plugins=(
   git
   bundler
   dotenv
-  zsh-history-substring-search
+  history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
