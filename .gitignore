@@ -3,3 +3,6 @@
 Thumbs.db
 .vim/bundle/*
 .vim/.netrwhist
+.config/nvim/after/
+.config/nvim/pack/
+.config/nvim/plugin/

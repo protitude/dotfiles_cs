@@ -217,4 +217,4 @@ function robo() {
   fi
 }
 
-
+export PATH="$HOME/.local/bin:$PATH"
