@@ -16,7 +16,6 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -33,13 +32,13 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.filetype.add({
- filename = {
-   ['*.module'] = 'php',
-   ['*.install'] = 'php',
-   ['*.test'] = 'php',
-   ['*.inc'] = 'php',
-   ['*.profile'] = 'php',
-   ['*.view'] = 'php',
-   ['*.twig'] = 'html',
- },
+  extension = {
+    module = "php",
+    install = "php",
+    test = "php",
+    inc = "php",
+    profile = "php",
+    view = "php",
+    twig = "html",
+  },
 })

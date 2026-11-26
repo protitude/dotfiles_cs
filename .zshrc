@@ -158,6 +158,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Custom functions/Aliases
 
+export EDITOR='nvim'
+export VISUAL='nvim'
+alias vim='nvim'
+alias v='nvim'
+
 alias gt="git for-each-ref --sort='*authordate' --format='%(refname:short)' refs/tags"
 
 alias gs='git status'

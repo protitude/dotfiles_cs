@@ -1,6 +1,7 @@
-require("protitude.lazy")
+-- set/remap first so mapleader is defined before plugin keymaps are created
 require("protitude.set")
 require("protitude.remap")
+require("protitude.lazy")
 
 local augroup = vim.api.nvim_create_augroup
 local ProtitudeGroup = augroup('Protitude', {})
